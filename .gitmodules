@@ -1,0 +1,6 @@
+[submodule "bruker_frontend"]
+	path = bruker_frontend
+	url = https://github.com/glartek2/bruker_frontend.git
+[submodule "bruker_backend"]
+	path = bruker_backend
+	url = https://github.com/glartek2/bruker_backend.git
