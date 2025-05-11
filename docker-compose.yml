@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   bruker-postgres:
     image: postgres:15
@@ -45,7 +43,14 @@ services:
       dockerfile: .docker/Dockerfile
     container_name: bruker-frontend
     volumes:
-      - ./bruker_frontend:/app
+      - ./bruker_frontend/src:/app/src:cached
+      - ./bruker_frontend/.env:/app/.env:cached
+      - ./bruker_frontend/index.html:/app/index.html:cached
+      - ./bruker_frontend/package.json:/app/package.json:cached
+      - ./bruker_frontend/tsconfig.app.json:/app/tsconfig.app.json:cached
+      - ./bruker_frontend/tsconfig.node.json:/app/tsconfig.node.json:cached
+      - ./bruker_frontend/tsconfig.json:/app/tsconfig.json:cached
+      - ./bruker_frontend/vite.config.ts:/app/vite.config.ts:cached
     ports:
       - "5173:5173"
     depends_on:
