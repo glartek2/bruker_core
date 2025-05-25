@@ -1,10 +1,16 @@
-.PHONY: up down restart stop rebuild logs ps up_backend up_frontend
+.PHONY: up down restart stop rebuild logs ps up_backend up_dev down_dev
 
 up:
 	docker-compose up -d
 
+up_dev:
+	docker-compose -f docker-compose.development.yml up -d --build
+
 down:
 	docker-compose down
+
+down_dev:
+	docker-compose -f docker-compose.development.yml down
 
 stop:
 	docker-compose stop
