@@ -1,0 +1,32 @@
+name: CI/CD Development
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deployment on remote server
+        run: |
+          SSH_USER='root'
+          SSH_HOST='138.68.91.169'
+          SSH_PORT=22
+          SSH_PASS='c089U![Y'
+                              
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+          
+          ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
+          
+          sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USER@$SSH_HOST bash -c "'
+            cd /opt/bruker_core || exit 1
+            git pull origin main
+            git submodule update --init --recursive
+            docker-compose -f docker-compose.development.yml up -d --build
+          '"
+          
+          echo "Deployment done"
