@@ -3,14 +3,8 @@
 up:
 	docker-compose up -d
 
-up_dev:
-	docker-compose -f docker-compose.development.yml up -d --build
-
 down:
 	docker-compose down
-
-down_dev:
-	docker-compose -f docker-compose.development.yml down
 
 stop:
 	docker-compose stop
