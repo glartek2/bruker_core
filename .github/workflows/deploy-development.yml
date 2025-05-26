@@ -30,7 +30,8 @@ jobs:
             cd /opt/bruker_core || exit 1
             git pull origin main
             git submodule update --init --recursive
-            docker-compose -f docker-compose.development.yml up -d --build
+            docker-compose -f docker-compose.development.yml down
+            docker-compose -f docker-compose.development.yml up -d
           '"
           
           echo "Deployment done"
