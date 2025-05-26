@@ -44,6 +44,7 @@ services:
     container_name: bruker-frontend
     volumes:
       - ./bruker_frontend/src:/app/src:cached
+      - ./bruker_frontend/public:/app/public:cached
       - ./bruker_frontend/.env:/app/.env:cached
       - ./bruker_frontend/index.html:/app/index.html:cached
       - ./bruker_frontend/package.json:/app/package.json:cached
