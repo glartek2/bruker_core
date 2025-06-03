@@ -31,7 +31,7 @@ jobs:
             git pull origin main
             git submodule update --init --recursive
             docker-compose -f docker-compose.development.yml down
-            docker-compose -f docker-compose.development.yml up -d
+            docker-compose -f docker-compose.development.yml up --build -d
           '"
           
           echo "Deployment done"
