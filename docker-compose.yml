@@ -32,6 +32,10 @@ services:
       - ./bruker_backend:/app
     ports:
       - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DJANGO_SETTINGS_MODULE=bruker_backend.settings
+      - WATCHMAN_STORAGE_PATH=/tmp
     env_file:
       - bruker_backend/.env
     depends_on:
